@@ -81,7 +81,7 @@ def create_tiledb(source, output_path, chunk_size=1000):
     for chunk in data_iterator:
         tiledb.from_pandas(output_path, chunk, sparse=True, full_domain=True,
                            tile=10000, attr_filters=None,
-                           row_start_idx=row_idx, allows_duplicates=False,
+                           allows_duplicates=False,
                            mode="append" if row_idx else "ingest")
         progress_monitor.update(len(chunk))
         row_idx += len(chunk)
